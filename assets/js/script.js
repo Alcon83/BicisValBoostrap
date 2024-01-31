@@ -10,10 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle('bg-dark');
         document.body.classList.toggle('text-white');
 
-
-
-
-        // Define iconColor basado en el tema activo
         const iconColor = document.body.classList.contains('bg-dark') ? 'text-white' : 'text-dark';
 
         const socialLinks = document.querySelectorAll('.social-link');
@@ -22,16 +18,29 @@ document.addEventListener('DOMContentLoaded', () => {
             link.classList.add(iconColor);
         });
 
-        const tables = document.querySelectorAll('.table'); // Selecciona todas las tablas
+        const tables = document.querySelectorAll('.table');
 
         tables.forEach(table => {
-            // Verifica si la tabla ya tiene la clase table-dark o table-light
+
             if (table.classList.contains('table-dark')) {
                 table.classList.remove('table-dark');
                 table.classList.add('table-light');
             } else {
                 table.classList.remove('table-light');
                 table.classList.add('table-dark');
+            }
+        });
+
+        const lenguages = document.querySelectorAll('.idioma');
+
+        lenguages.forEach(lenguage => {
+
+            if (lenguage.classList.contains('btn-light')) {
+                lenguage.classList.remove('btn-light');
+                lenguage.classList.add('btn-dark');
+            } else {
+                lenguage.classList.remove('btn-dark');
+                lenguage.classList.add('btn-light');
             }
         });
 
@@ -93,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Evento delegado para manejar clics en 'main'
+
     main.addEventListener('click', (event) => {
         let target = event.target.closest('a');
         if (target && (target.getAttribute('href').startsWith('pages/') || target.getAttribute('href') === 'index.html')) {
@@ -102,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Eventos para enlaces en la cabecera y el pie de página
     links.forEach(link => {
         link.addEventListener('click', (event) => {
             let href = link.getAttribute('href');
@@ -114,8 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
-    // Cargar el contenido inicial si es necesario
     if (!main.innerHTML.trim()) {
         loadContent('pages/home.html');
     }
